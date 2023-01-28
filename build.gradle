@@ -25,3 +25,13 @@ dependencies {
     implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
     
 }
+
+jar {
+    manifest {
+        attributes "Main-Class": "com.engilyin.csvbank.DailyDollarBalanceProducer"
+    }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
