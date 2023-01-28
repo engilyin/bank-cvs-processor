@@ -1,0 +1,27 @@
+plugins {
+	id 'java'
+}
+
+
+allprojects {
+  group = 'com.engilyin'
+  version = project.getProperty("version")=='unspecified'? "${baseVersion}-SNAPSHOT" : project.getProperty("version")
+}
+
+
+sourceCompatibility = "${targetCompatibility}"
+targetCompatibility = "${targetCompatibility}"
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+    
+    implementation "org.slf4j:slf4j-simple:${slf4jVersion}"
+    implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
+    
+}
